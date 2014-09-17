@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.wrapper{width: 90%;text-align: center;margin: 50px auto;}
+	img{width: 250px;height: 200px;background:url(o_108.gif) no-repeat center;}
+	</style>
+</head>
+<body>
+	<div class="wrapper"><img data-src="http://img.mukewang.com/user/53352186000181b204800640-220-220.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://img1.gamersky.com/image2014/09/20140911ll_4/gamersky_02small_04_2014911115337A.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://img1.gtimg.com/gamezone/pics/hv1/75/233/1695/110276865.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://img.askci.com/images/chanye/2014/8/29/caa550b9-3f43-42ab-8822-3a0656cd1381.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://image.game.uc.cn/2014/9/11/9906041.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://image.game.uc.cn/2014/9/11/9906042.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://img2.91.com/uploads/allimg/140828/737-140RQ40547-50.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_1.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_2.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_3.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_4.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_5.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_6.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_7.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_8.jpg" src="o_pixel.gif" ></div>
+	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_9.jpg" src="o_pixel.gif" ></div>
+	<script>
+		var images = document.images;
+		var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		display();
+		window.onscroll = function(){
+			display();
+		}
+
+		function display(){
+			var windowScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			for(var i = 0;i < images.length;i++){
+				(function(currentImg){
+					var currentTop = currentImg.getBoundingClientRect().top;
+					if(currentTop >= 0 && currentTop < windowHeight){
+						setTimeout(function(){
+							currentImg.src = currentImg.dataset.src;
+						},300); 
+					}
+				})(images[i]);
+			}
+		}
+	</script>
+</body>
+</html>
