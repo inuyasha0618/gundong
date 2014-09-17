@@ -26,24 +26,40 @@
 	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_8.jpg" src="o_pixel.gif" ></div>
 	<div class="wrapper"><img data-src="http://images.cnblogs.com/cnblogs_com/Darren_code/311197/o_9.jpg" src="o_pixel.gif" ></div>
 	<script>
-		var images = document.images;
+		var images = [];
+		var len = document.images.length;
+		for(var i = 0;i < len;i++){
+			images.push(document.images[i]);
+		}
 		var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
 		display();
 		window.onscroll = function(){
 			display();
 		}
 
+		// function display(){
+		// 	var windowScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		// 	for(var i = 0;i < images.length;i++){
+		// 		(function(currentImg){
+		// 			var currentTop = currentImg.getBoundingClientRect().top;
+		// 			if(currentTop >= 0 && currentTop < windowHeight){
+		// 				setTimeout(function(){
+		// 					currentImg.src = currentImg.dataset.src;
+		// 				},300); 
+		// 			}
+		// 		})(images[i]);
+		// 	}
+		// }
+
 		function display(){
-			var windowScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-			for(var i = 0;i < images.length;i++){
+			while(images.length > 0 && images[0].getBoundingClientRect().top >= 0 && images[0].getBoundingClientRect().top < windowHeight){
+				console.log("hehe");
+				var img = images.shift();
 				(function(currentImg){
-					var currentTop = currentImg.getBoundingClientRect().top;
-					if(currentTop >= 0 && currentTop < windowHeight){
-						setTimeout(function(){
-							currentImg.src = currentImg.dataset.src;
-						},300); 
-					}
-				})(images[i]);
+					setTimeout(function(){
+					currentImg.src = currentImg.dataset.src;
+					},300);
+				})(img);
 			}
 		}
 	</script>
